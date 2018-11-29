@@ -14,7 +14,7 @@ def run_game():
     ai_settings = Settings()
     screen = pygame.display.set_mode((ai_settings.screen_width,ai_settings.screen_height))
     pygame.display.set_caption("打倒黑恶势力")
-    play_button = Button(ai_settings,screen,"来Van吧")
+    play_button = Button(ai_settings,screen,"play !")
     stats = GameStats(ai_settings)
     ship = Ship(ai_settings,screen)
     bullets = Group()
@@ -24,12 +24,12 @@ def run_game():
     
 
     while True:
-        gf.check_event(ai_settings,screen,ship,bullets,stats,play_button,aliens)
+        gf.check_event(ai_settings,screen,ship,bullets,stats,play_button,aliens,sb)
         
         if stats.game_active:
             ship.update()
             gf.update_bullets(ai_settings,aliens,bullets,ship,screen,stats,sb)
-            gf.update_aliens(aliens,ai_settings,ship,bullets,stats,screen)
+            gf.update_aliens(aliens,ai_settings,ship,bullets,stats,screen,sb)
             
             #print(len(bullets))
         gf.update_screen(ai_settings,screen,ship,bullets,aliens,play_button,stats,sb)
